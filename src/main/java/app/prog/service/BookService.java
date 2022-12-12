@@ -25,7 +25,6 @@ public class BookService {
         return repository.saveAll(toUpdate);
     }
 
-    //TODO-3: should I use Integer here or int ? Why ?
     public BookEntity deleteBook(int BookEntityId) {
         /*
         TIPS: From the API, the Class Optional<T> is :
