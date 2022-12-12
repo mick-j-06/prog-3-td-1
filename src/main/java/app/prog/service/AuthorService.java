@@ -1,7 +1,7 @@
 package app.prog.service;
 
-import app.prog.model.BookEntity;
-import app.prog.repository.BookRepository;
+import app.prog.model.AuthorEntity;
+import app.prog.repository.AuthorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,32 +10,32 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
-public class BookService {
-    private final BookRepository repository;
+public class AuthorService {
+    private final AuthorRepository repository;
 
-    public List<BookEntity> getBooks() {
+    public List<AuthorEntity> getAuthors() {
         return repository.findAll();
     }
 
-    public List<BookEntity> createBooks(List<BookEntity> toCreate) {
+    public List<AuthorEntity> createAuthors(List<AuthorEntity> toCreate) {
         return repository.saveAll(toCreate);
     }
 
-    public List<BookEntity> updateBooks(List<BookEntity> toUpdate) {
+    public List<AuthorEntity> updateAuthors(List<AuthorEntity> toUpdate) {
         return repository.saveAll(toUpdate);
     }
 
     //TODO-3: should I use Integer here or int ? Why ?
-    public BookEntity deleteBook(int id) {
+    public AuthorEntity deleteAuthor(int id) {
         /*
         TIPS: From the API, the Class Optional<T> is :
         A container object which may or may not contain a non-null value.
         If a value is present, isPresent() returns true.
         If no value is present, the object is considered empty and isPresent() returns false.
 
-        T is the type of the value, for example : here the class type is BookEntity
+        T is the type of the value, for example : here the class type is AuthorEntity
          */
-        Optional<BookEntity> optional = repository.findById(id);
+        Optional<AuthorEntity> optional = repository.findById(id);
         if (optional.isPresent()) {
             repository.delete(optional.get());
             return optional.get();
@@ -48,7 +48,7 @@ public class BookService {
         Link 1 : https://www.baeldung.com/spring-response-entity
         Link 2 : https://www.baeldung.com/exception-handling-for-rest-with-spring
          */
-            throw new RuntimeException("BookEntity." + id + " not found");
+            throw new RuntimeException("AuthorEntity." + id + " not found");
         }
     }
 }

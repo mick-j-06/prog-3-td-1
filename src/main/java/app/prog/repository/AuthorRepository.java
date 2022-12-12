@@ -1,7 +1,8 @@
 package app.prog.repository;
 
+import app.prog.model.AuthorEntity;
 import app.prog.model.BookEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BookRepository extends JpaRepository<BookEntity, Integer> {
+public interface AuthorRepository extends JpaRepository<AuthorEntity, Integer> {
 }
