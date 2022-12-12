@@ -1,5 +1,6 @@
 package app.prog.service;
 
+import app.prog.exception.NotFoundException;
 import app.prog.model.AuthorEntity;
 import app.prog.repository.AuthorRepository;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,6 @@ public class AuthorService {
         return repository.saveAll(toUpdate);
     }
 
-    //TODO-3: should I use Integer here or int ? Why ?
     public AuthorEntity deleteAuthor(int id) {
         /*
         TIPS: From the API, the Class Optional<T> is :
@@ -48,7 +48,7 @@ public class AuthorService {
         Link 1 : https://www.baeldung.com/spring-response-entity
         Link 2 : https://www.baeldung.com/exception-handling-for-rest-with-spring
          */
-            throw new RuntimeException("AuthorEntity." + id + " not found");
+            throw new NotFoundException("AuthorEntity." + id + " not found");
         }
     }
 }
