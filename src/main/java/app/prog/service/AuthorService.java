@@ -27,14 +27,6 @@ public class AuthorService {
     }
 
     public AuthorEntity deleteAuthor(int id) {
-        /*
-        TIPS: From the API, the Class Optional<T> is :
-        A container object which may or may not contain a non-null value.
-        If a value is present, isPresent() returns true.
-        If no value is present, the object is considered empty and isPresent() returns false.
-
-        T is the type of the value, for example : here the class type is AuthorEntity
-         */
         Optional<AuthorEntity> optional = repository.findById(id);
         if (optional.isPresent()) {
             repository.delete(optional.get());
