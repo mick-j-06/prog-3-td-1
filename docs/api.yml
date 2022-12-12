@@ -44,7 +44,7 @@ paths:
         '500':
           description: Internal server error
     put:
-      tags :
+      tags:
         - Books
       summary: update some books
       operationId: updateBooks
@@ -66,7 +66,7 @@ paths:
           description: Internal server error
   /books/{bookId}:
     delete:
-      tags :
+      tags:
         - Books
       summary: delete a specific book
       operationId: deleteBook
@@ -191,6 +191,12 @@ components:
           type: string
         author:
           type: string
+        #TODO-7-b: map the BookResponse to match to this appropriate resource
+        # Then make all necessary changes for the cru(d) operations (GET, POST, PUT, (DELETE))
+        categories:
+          type: array
+          items:
+            $ref: '#/components/schemas/Category'
     Author:
       type: object
       properties:
@@ -210,4 +216,13 @@ components:
         name:
           type: string
         particularity:
+          type: string
+    #TODO-7-a: create the appropriate model for category
+    # Must know : a category can be used by some books and a book can have some categories
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
           type: string
