@@ -28,6 +28,10 @@ public class AuthorService {
         return authorRepository.saveAll(authorList);
     }
 
+    public Author getByName(String name) {
+        return authorRepository.findAuthorByName(name);
+    }
+
     public Author deleteById(int authorId) {
         Optional<Author> author = authorRepository.findById(authorId);
         if(author.isPresent()) {
