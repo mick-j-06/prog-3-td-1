@@ -1,5 +1,6 @@
 package app.prog.service;
 
+import app.prog.controller.exeption.NotFoundExeption;
 import app.prog.model.Author;
 import app.prog.repository.AuthorRepository;
 import jakarta.transaction.Transactional;
@@ -39,7 +40,7 @@ public class AuthorService {
             return author.get();
         }
         else {
-            throw new RuntimeException("BookEntity." + authorId + " not found");
+            throw new NotFoundExeption("BookEntity." + authorId + " not found");
         }
     }
 }
