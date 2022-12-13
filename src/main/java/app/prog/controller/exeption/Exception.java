@@ -14,5 +14,5 @@ public class Exception {
     private String message;
     private HttpStatus status;
     private Instant instant;
-    private Throwable throwable;
+    private String stackTrace;
 }

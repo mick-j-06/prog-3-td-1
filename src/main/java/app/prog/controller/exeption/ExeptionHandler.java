@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.time.Instant;
+import java.util.Arrays;
 
 @ControllerAdvice
 public class ExeptionHandler {
@@ -15,8 +16,9 @@ public class ExeptionHandler {
                 notFoundExeption.getMessage(),
                 HttpStatus.NOT_FOUND,
                 Instant.now(),
-                notFoundExeption
+                Arrays.toString(notFoundExeption.getStackTrace())
         );
+        notFoundExeption.printStackTrace();
         return ResponseEntity
                 .status(404)
                 .body(exeption);
